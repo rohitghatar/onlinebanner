@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %} Profile {% endblock %}
+
+{% block content %}
+
+
+{% if puser %}
+<form method="post" class="row g-3 m-0 me-2 mx-2 px-2 my-5">
+  {% csrf_token %}
+  <div class="col-md-4">
+    <label class="form-label">First name</label>
+    <input type="text" name="firstname" value="{{puser.firstname}}" class="form-control" required>
+
+  </div>
+  <div class="col-md-4">
+    <label class="form-label">Last name</label>
+    <input type="text" name="lastname" value="{{puser.lastname}}" class="form-control" required>
+
+  </div>
+  <div class="col-md-4">
+    <label class="form-label">Email</label>
+    <div class="input-group">
+      <span class="input-group-text">@</span>
+      <input type="text" name="email" value="{{puser.email}}" class="form-control" required>
+    </div>
+  </div>
+
+
+  <div class="col-md-4">
+    <label class="form-label">Phone Number</label>
+    <input type="text" name="mobile" value="{{puser.mobile}}" class="form-control" required>
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">City</label>
+    <input type="text" name="city" value="{{puser.city}}" class="form-control" required>
+  </div>
+
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Update Profile</button>
+    <button type="reset" class="btn btn-success"> Reset </button>
+    <a href="/deletepublisher/{{puser.id}}" class="btn btn-danger"> Delete </a>
+  </div>
+</form>
+
+
+{% else %}
+<form method="post" class="row g-3 m-0 me-2 mx-2 px-2 my-5">
+  {% csrf_token %}
+  <div class="col-md-4">
+    <label class="form-label">First name</label>
+    <input type="text" name="firstname" value="{{cuser.firstname}}" class="form-control" required>
+
+  </div>
+  <div class="col-md-4">
+    <label class="form-label">Last name</label>
+    <input type="text" name="lastname" value="{{cuser.lastname}}" class="form-control" required>
+
+  </div>
+  <div class="col-md-4">
+    <label class="form-label">Email</label>
+    <div class="input-group">
+      <span class="input-group-text">@</span>
+      <input type="text" name="email" value="{{cuser.email}}" class="form-control" required>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Phone Number</label>
+    <input type="text" name="mobile" value="{{cuser.mobile}}" class="form-control" required>
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">City</label>
+    <input type="text" name="city" value="{{cuser.city}}" class="form-control" required>
+  </div>
+
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Update Profile</button>
+    <button type="reset" class="btn btn-success"> Reset </button>
+    <a href="/deleteclient/{{cuser.id}}" class="btn btn-danger"> Delete </a>
+  </div>
+</form>
+{% endif %}
+
+{% endblock %}

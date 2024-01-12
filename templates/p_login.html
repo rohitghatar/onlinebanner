@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+   <meta charset="utf-8">
+   <title>Publisher Login Form | OnlineBanner</title>
+   <link rel="stylesheet" href="/static/css/c_login_style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+</head>
+
+<body>
+   <div class="center">
+      <input type="checkbox" id="show">
+      <label for="show" class="show-btn">View Login Form</label>
+
+      
+      <div class="container">
+         <label for="show" class="close-btn fas fa-times" title="close"></label>
+         <div class="text">
+            Publisher Login Form
+         </div>
+         <form method="post">
+            {% csrf_token %}
+            <div class="data">
+               <label>Email or Phone</label>
+               <input name="email" type="text" required>
+            </div>
+            <div class="data">
+               <label>Password</label>
+               <input name="password" type="password" required>
+            </div>
+            <div class="btn">
+               <div class="inner"></div>
+               <button type="submit" name="plogin" value="plogin">login</button>
+            </div>
+            <div class="signup-link">
+               Not a member? <a href="/p_signup">Signup now</a> or <a href="/">Go to Home</a>
+               
+            </div>
+         </form>
+      </div>
+   </div>
+</body>
+
+</html>

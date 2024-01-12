@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %} Banners {% endblock %}
+
+{% block content %}
+
+
+<section class="product_section ">
+  <div class="container">
+
+    <div class="d-flex flex-row mb-3 mx-2">
+      {% if puser is not none %}
+      <a href="/upload_banner">
+        <button class="btn btn-outline-dark">Upload your banner</button>
+      </a>
+      {% endif %}
+      
+       
+
+        <form method="GET" class="d-flex flex-row mb-3 mx-2" action=".">
+        <div class="col-md-4">
+        <select class="form-select mb-3 mx-2 me-2" name="publisher" id="validationCustom04" aria-expanded="false" >
+          <option selected disabled value="">Select Publisher</option>
+          {% for Publisher in pub_name %}
+          <option >{{ Publisher }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      
+      <div class="col-md-4">
+      <select class="form-select" name="location" id="validationCustom04" aria-expanded="false" >
+        <option selected disabled value="">Select location</option>
+        {% for place in location %}
+        <option>{{ place }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-4">
+    <select class="form-select" name="price" id="validationCustom04" aria-expanded="false" >
+      <option selected disabled value="">Set Price</option>
+      <option>HIGHEST</option>
+      <option>LOWEST</option>
+    </select>
+  </div>
+  <div class="col-md-2">
+  <button class="btn btn-primary" type="submit"> Filter </button>
+  </div>
+  </form>
+  </div>
+
+
+  </div>
+
+
+  {% for items in item %}
+  <div class="product_container">
+    <div class="box">
+      <div class="box-content">
+        <div class="img-box">
+          <img src="{{ items.banner.url }}" width="350" height="411" alt="">
+        </div>
+        <div class="detail-box">
+          <div class="text">
+            <h4>
+              {{ items.banner_name}}
+            </h4>
+            <h6>
+              PUBLISHED BY - {{ items.pub_name }}
+            </h6>
+          </div>
+          <div class="like">
+            <h6>
+              Location - {{ items.location }}
+            </h6>
+            <div class="text">
+              <h6> {{ items.price }} Rs. </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+  </div>
+</section>
+
+
+
+{% endblock %}
