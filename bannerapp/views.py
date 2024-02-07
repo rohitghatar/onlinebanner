@@ -120,13 +120,11 @@ def banners(request):
             item = item.filter(location = banner_location)
 
         if banner_price != '' and banner_price is not None:
-            a = 'HIGHEST' 
-            b = 'LOWEST' 
 
-            if banner_price == a:
+            if banner_price == 'HIGHEST':
                 item = item.order_by('-price')
 
-            elif banner_price == b:
+            elif banner_price == 'LOWEST':
                 item = item.order_by('price')
                 
 
